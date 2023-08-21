@@ -8,14 +8,14 @@ sys.path.append(os.path.dirname(test_dir))
 from test_util import DocSitePreviewTest
 
 script_name: str = "sync_scaffold.sh"
-feature_command: str = "/" + script_name
-diff_exclude: list = ["--exclude", "temp", "--exclude", script_name]
+script_args: str = "265874160aec258f9c725b0e940bc803ca558bda"
+diff_command_line: str = f"diff -r data actual --exclude temp --exclude {script_name}"
 
 script_env = os.environ.copy()
 script_env["TEST"] = str(1)
 
-test = DocSitePreviewTest(test_dir, feature_dir, feature_command)
+test = DocSitePreviewTest(test_dir, feature_dir, script_name)
 
-test.execute(env=script_env)
+test.execute(args=script_args, env=script_env)
 
-test.verify(diff_exclude)
+test.verify(diff_command_line)

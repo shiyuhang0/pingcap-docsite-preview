@@ -1,16 +1,17 @@
 import os
+import shlex
 import shutil
 import subprocess
 
 
 class DocSitePreviewTest:
 
-    def __init__(self, test_dir: str, feature_dir: str, feature_command: str):
+    def __init__(self, test_dir: str, feature_dir: str, script_name: str):
         self.feature_dir = feature_dir
-        self.feature_command = feature_command
+        self.script_name = script_name
         self.test_dir = test_dir
         self.test_output = os.path.join(self.test_dir, "actual")
-        self.test_feature_path = self.test_output + self.feature_command
+        self.test_feature_path = os.path.join(self.test_output, self.script_name)
         self._setup_test_env()
 
     def _setup_test_env(self):
@@ -34,8 +35,7 @@ class DocSitePreviewTest:
         """
         Copy the script to the test environment.
         """
-        shutil.copy(self.feature_dir + self.feature_command,
-                    self.test_feature_path)
+        shutil.copy(os.path.join(self.feature_dir, self.script_name), self.test_feature_path)
         self._make_script_executable(self.test_feature_path)
 
     @staticmethod
@@ -45,12 +45,13 @@ class DocSitePreviewTest:
         """
         os.chmod(script, 0o755)
 
-    def execute(self, env: dict | None = None):
+    def execute(self, args: str = "", env: dict | None = None):
         """
         Execute the feature command.
         """
-
-        self._execute_command(self.test_feature_path, self.test_output, env)
+        command_str = self.test_feature_path + " " + args
+        command_list = shlex.split(command_str)
+        self._execute_command(command_list, self.test_output, env)
 
     @staticmethod
     def _execute_command(command, cwd, env=None):
@@ -63,10 +64,10 @@ class DocSitePreviewTest:
         if code != 0:
             raise Exception("Error: command returned code {}".format(code))
 
-    def verify(self, command: list | None = None):
+    def verify(self, command: str = "diff -r data actual"):
         """
         Use diff command to compare the expected output (data) and the actual output.
         """
-        diff_command = ["diff", "-r", "data", "actual"] + (command or [])
-        self._execute_command(diff_command, self.test_dir)
-        print("Test {} passed successfully".format(self.feature_command))
+        args = shlex.split(command)
+        self._execute_command(args, self.test_dir)
+        print("Test {} passed successfully".format(self.script_name))
