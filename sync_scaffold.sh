@@ -11,7 +11,7 @@ SYNC_FILES=("TOC.md" "_index.md" "_docHome.md")
 SYNC_JSON_FILE="docs.json"
 
 # Get the current script's directory and change to it
-SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
 cd "$SCRIPT_DIR"
 
 # Verify if CLONE_DIR is a git repository
@@ -44,6 +44,9 @@ rsync -av --checksum "${INCLUDES[@]}" --exclude='*' "$SRC" "$DEST"
 
 # Copy SYNC_JSON_FILE from CLONE_DIR to the current directory
 cp "$CLONE_DIR/$SYNC_JSON_FILE" "./$SYNC_JSON_FILE"
+
+# Exit if TEST is set and not empty
+test -n "$TEST" && echo "Test mode, exiting..." && exit 0
 
 ## Commit changes with the commit SHA from the cloned repository
 CURRENT_SHA=$(git -C "$CLONE_DIR" rev-parse HEAD)
