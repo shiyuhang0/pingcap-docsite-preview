@@ -1,0 +1,30 @@
+name: Run tests
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+
+  build_and_test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout current repo
+      uses: actions/checkout@v3
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+    - name: Create .env file
+      run: |
+        echo "GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}" >> .env
+        echo "TEST=1" >> .env
+        echo "DOCS_PR=13910" >> .env
+        echo "DOCS_CN_PR=14523" >> .env
+        echo "CLOUD_DOCS_PR=10098" >> .env
+        echo "OPERATOR_DOCS_PR=2397" >> .env
+        echo "RELEASE_DIR=release-6.7" >> .env
+    - name: Run test script
+      run: |
+        python3 test/test.py
