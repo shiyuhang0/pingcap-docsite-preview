@@ -3,8 +3,8 @@
 <!-- markdownlint-disable MD041 -->
 
 -   [ドキュメントホーム](https://docs.pingcap.com/)
--   TiDBについて
-    -   [TiDB の紹介](/overview.md)
+-   TiDBセルフマネージドについて
+    -   [TiDBセルフマネージドとは](/overview.md)
     -   [TiDB 7.5 リリースノート](/releases/release-7.5.0.md)
     -   [特徴](/basic-features.md)
     -   [MySQL 互換性](/mysql-compatibility.md)
@@ -20,7 +20,7 @@
 -   開発する
     -   [概要](/develop/dev-guide-overview.md)
     -   クイックスタート
-        -   [TiDB サーバーレスクラスタを構築する](/develop/dev-guide-build-cluster-in-cloud.md)
+        -   [TiDB Cloudサーバーレスクラスタを構築する](/develop/dev-guide-build-cluster-in-cloud.md)
         -   [TiDB の CRUD SQL](/develop/dev-guide-tidb-crud-sql.md)
     -   アプリケーション例
         -   Java
@@ -85,7 +85,7 @@
     -   トランザクション
         -   [概要](/develop/dev-guide-transaction-overview.md)
         -   [楽観的取引と悲観的取引](/develop/dev-guide-optimistic-and-pessimistic-transaction.md)
-        -   [取引トランザクション](/develop/dev-guide-transaction-restraints.md)
+        -   [トランザクション制限](/develop/dev-guide-transaction-restraints.md)
         -   [トランザクションエラーの処理](/develop/dev-guide-transaction-troubleshoot.md)
     -   最適化する
         -   [概要](/develop/dev-guide-optimize-sql-overview.md)
@@ -187,7 +187,7 @@
                 -   [バッチテーブル作成](/br/br-batch-create-table.md)
                 -   [チェックポイントバックアップ](/br/br-checkpoint-backup.md)
                 -   [チェックポイントの復元](/br/br-checkpoint-restore.md)
-            -   [DumplingとTiDB Lightningを使用してデータをバックアップおよび復元する](/backup-and-restore-using-dumpling-lightning.md)
+            -   [DumplingとTiDB Lightning を使用してデータをバックアップおよび復元する](/backup-and-restore-using-dumpling-lightning.md)
             -   [RawKV のバックアップと復元](/br/rawkv-backup-and-restore.md)
             -   [増分バックアップと復元](/br/br-incremental-guide.md)
     -   クラスタ災害復旧 (DR)
@@ -199,7 +199,7 @@
     -   [タイムゾーンの設定](/configure-time-zone.md)
     -   [毎日のチェックリスト](/daily-check.md)
     -   [TiFlashの管理](/tiflash/maintain-tiflash.md)
-    -   [TiUPを使用して TiDB を管理](/maintain-tidb-using-tiup.md)
+    -   [TiUP を使用して TiDB を管理](/maintain-tidb-using-tiup.md)
     -   [コンフィグレーションを動的に変更する](/dynamic-config.md)
     -   [オンラインの安全でない回復](/online-unsafe-recovery.md)
     -   [プライマリクラスタとセカンダリクラスタ間でデータを複製する](/replicate-between-primary-and-secondary-clusters.md)
@@ -309,8 +309,8 @@
         -   ステイル読み取りを使用する (推奨)
             -   [ステイル読み取りの使用シナリオ](/stale-read.md)
             -   [`As OF TIMESTAMP`使用してステイル読み取りを実行する](/as-of-timestamp.md)
-            -   [`tidb_read_staleness`を使用してステイル読み取りを実行する](/tidb-read-staleness.md)
-            -   [`tidb_external_ts`を使用してステイル読み取りを実行する](/tidb-external-ts.md)
+            -   [`tidb_read_staleness`使用してステイル読み取りを実行する](/tidb-read-staleness.md)
+            -   [`tidb_external_ts`使用してステイル読み取りを実行する](/tidb-external-ts.md)
         -   [`tidb_snapshot`システム変数を使用する](/read-historical-data.md)
     -   ベストプラクティス
         -   [TiDBを使用する](/best-practices/tidb-best-practices.md)
@@ -520,7 +520,7 @@
     -   TiDB Lightning
         -   [概要](/tidb-lightning/tidb-lightning-overview.md)
         -   [始める](/get-started-with-tidb-lightning.md)
-        -   [TiDB Lightning をデプロイ](/tidb-lightning/deploy-tidb-lightning.md)
+        -   [TiDB Lightningをデプロイ](/tidb-lightning/deploy-tidb-lightning.md)
         -   [ターゲットデータベースの要件](/tidb-lightning/tidb-lightning-requirements.md)
         -   データソース
             -   [データ一致ルール](/tidb-lightning/tidb-lightning-data-source.md)
@@ -595,7 +595,7 @@
         -   [クイックスタート](/tidb-binlog/get-started-with-tidb-binlog.md)
         -   [デプロイ](/tidb-binlog/deploy-tidb-binlog.md)
         -   [管理](/tidb-binlog/maintain-tidb-binlog-cluster.md)
-        -   [構成、設定](/tidb-binlog/tidb-binlog-configuration-file.md)
+        -   [設定](/tidb-binlog/tidb-binlog-configuration-file.md)
             -   [Pump](/tidb-binlog/tidb-binlog-configuration-file.md#pump)
             -   [Drainer](/tidb-binlog/tidb-binlog-configuration-file.md#drainer)
         -   [アップグレード](/tidb-binlog/upgrade-tidb-binlog.md)
@@ -613,7 +613,7 @@
     -   PingCAPクリニック診断サービス
         -   [概要](/clinic/clinic-introduction.md)
         -   [クイックスタート](/clinic/quick-start-with-clinic.md)
-        -   [PingCAPクリニックを使用してクラスターをトラブルシューティングする](/clinic/clinic-user-guide-for-tiup.md)
+        -   [PingCAPクリニック を使用してクラスターをトラブルシューティングする](/clinic/clinic-user-guide-for-tiup.md)
         -   [PingCAPクリニック診断データ](/clinic/clinic-data-instruction-for-tiup.md)
     -   ティスパーク
         -   [ユーザーガイド](/tispark-overview.md)
@@ -696,7 +696,7 @@
     -   構文
         -   SQL 言語の構造と構文
             -   属性
-                -   [自動増加](/auto-increment.md)
+                -   [自動インクリメント](/auto-increment.md)
                 -   [自動ランダム](/auto-random.md)
                 -   [シャード行IDビット](/shard-row-id-bits.md)
             -   [リテラル値](/literal-values.md)
@@ -1030,7 +1030,7 @@
     -   [リリースタイムライン](/releases/release-timeline.md)
     -   [TiDB バージョン管理](/releases/versioning.md)
     -   [TiDB インストール パッケージ](/binary-package.md)
-    -   v7.5
+    -   バージョン7.5
         -   [7.5.3](/releases/release-7.5.3.md)
         -   [7.5.2](/releases/release-7.5.2.md)
         -   [7.5.1](/releases/release-7.5.1.md)
@@ -1053,6 +1053,7 @@
     -   バージョン6.6
         -   [6.6.0-DMR](/releases/release-6.6.0.md)
     -   バージョン6.5
+        -   [6.5.11](/releases/release-6.5.11.md)
         -   [6.5.10](/releases/release-6.5.10.md)
         -   [6.5.9](/releases/release-6.5.9.md)
         -   [6.5.8](/releases/release-6.5.8.md)
@@ -1138,7 +1139,7 @@
         -   [4.0.0-ベータ.2](/releases/release-4.0.0-beta.2.md)
         -   [4.0.0-ベータ.1](/releases/release-4.0.0-beta.1.md)
         -   [4.0.0-ベータ](/releases/release-4.0.0-beta.md)
-    -   バージョン3.1
+    -   v3.1
         -   [3.1.2](/releases/release-3.1.2.md)
         -   [3.1.1](/releases/release-3.1.1.md)
         -   [3.1.0 正式版](/releases/release-3.1.0-ga.md)
