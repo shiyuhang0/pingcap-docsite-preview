@@ -1,15 +1,15 @@
 ---
-title: Database Audit Logging for {{{ .essential }}}
-summary: Learn about how to audit a {{{ .essential }}} cluster in TiDB Cloud.
+title: Database Audit Logging for TiDB Cloud Essential
+summary: Learn about how to audit a TiDB Cloud Essential cluster in TiDB Cloud.
 ---
 
-# Database Audit Logging (Beta) for {{{ .essential }}}
+# Database Audit Logging (Beta) for TiDB Cloud Essential
 
-{{{ .essential }}} provide you with a database audit logging feature to record a history of user access details (such as any SQL statements executed) in logs.
+TiDB Cloud Essential provide you with a database audit logging feature to record a history of user access details (such as any SQL statements executed) in logs.
 
 > **Note:**
 >
-> Currently, the database audit logging feature is only available upon request. To request this feature, click **?** in the lower-right corner of the [TiDB Cloud console](https://tidbcloud.com) and click **Request Support**. Then, fill in "Apply for {{{ .essential }}} database audit logging" in the **Description** field and click **Submit**.
+> Currently, the database audit logging feature is only available upon request. To request this feature, click **?** in the lower-right corner of the [TiDB Cloud console](https://tidbcloud.com) and click **Request Support**. Then, fill in "Apply for TiDB Cloud Essential database audit logging" in the **Description** field and click **Submit**.
 
 To assess the effectiveness of user access policies and other information security measures of your organization, it is a security best practice to conduct a periodic analysis of the database audit logs.
 
@@ -19,7 +19,7 @@ The audit logging feature is disabled by default. To audit a cluster, you need t
 
 ### Data redaction
 
-{{{ .essential }}} redact sensitive data in the audit logs by default. Take the following SQL statement as an example:
+TiDB Cloud Essential redact sensitive data in the audit logs by default. Take the following SQL statement as an example:
 
 ```sql 
 INSERT INTO `test`.`users` (`id`, `name`, `password`) VALUES (1, 'Alice', '123456');
@@ -33,7 +33,7 @@ INSERT INTO `test`.`users` (`id`, `name`, `password`) VALUES ( ... );
 
 ### Log file rotation
 
-{{{ .essential }}} generate a new audit log file when either of the following conditions is met:
+TiDB Cloud Essential generate a new audit log file when either of the following conditions is met:
 
 - The size of the current log file reaches rotation size (100 MB by default).
 - Rotation interval (one hour by default) has passed since the previous log generation. Depending on the internal scheduling mechanism, log generation might be delayed by a few minutes.
@@ -129,7 +129,7 @@ Here is the summary of all event classes in database audit logging:
 
 ### Enable audit logging
 
-You can enable audit logging for a {{{ .essential }}} cluster.
+You can enable audit logging for a TiDB Cloud Essential cluster.
 
 > **Note:**
 >
@@ -169,7 +169,7 @@ ticloud serverless audit-log config update -c <cluster-id> --enabled --cloud-sto
 
 ### Edit audit logging
 
-You can Edit the audit logging for a {{{ .essential }}} cluster after enabling it.
+You can Edit the audit logging for a TiDB Cloud Essential cluster after enabling it.
 
 <SimpleTab>
 <div label="Console">
@@ -199,7 +199,7 @@ ticloud serverless audit-log config update -c <cluster-id> --rotation-size-mib <
 
 ### Disable audit logging
 
-You can disable audit logging for a {{{ .essential }}} cluster.
+You can disable audit logging for a TiDB Cloud Essential cluster.
 
 <SimpleTab>
 <div label="Console">
@@ -345,11 +345,11 @@ ticloud serverless audit-log filter delete --cluster-id <cluster-id> --filter-ru
 
 ## Access audit logging with TiDB Cloud Storage
 
-{{{ .essential }}} audit logs are stored as readable text files named `YYYY-MM-DD-<index>.log`. When you store audit logs in TiDB Cloud, you can access and download them.
+TiDB Cloud Essential audit logs are stored as readable text files named `YYYY-MM-DD-<index>.log`. When you store audit logs in TiDB Cloud, you can access and download them.
 
 > **Note:**
 >
-> {{{ .essential }}} do not guarantee sequential ordering of audit logs. The log file named `YYYY-MM-DD-<index>.log` might contain the audit logs in previous days.
+> TiDB Cloud Essential do not guarantee sequential ordering of audit logs. The log file named `YYYY-MM-DD-<index>.log` might contain the audit logs in previous days.
 > If you want to retrieve all logs from a specific date (for example, January 1, 2025), specifying `--start-date 2025-01-01` and `--end-date 2025-01-02` usually works. But under extreme conditions, you might need to download all log files and order them by the `TIME` field.
 
 <SimpleTab>
